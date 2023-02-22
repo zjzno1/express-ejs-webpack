@@ -20,7 +20,7 @@ module.exports = {
 
 	output: {
 		path: resolve(__dirname, `../${CONFIG.DIR.DIST}`),
-		publicPath: CONFIG.PATH.PUBLIC_PATH,
+		publicPath: isDev ? CONFIG.PATH.PUBLIC_PATH : '/',
 		filename: `${CONFIG.DIR.SCRIPT}/[name].bundle.js`,
 		chunkFilename: `${CONFIG.DIR.SCRIPT}/[name].[chunkhash].js`
 	},
@@ -111,8 +111,8 @@ module.exports = {
 	plugins: [
 		new CopyWebpackPlugin([
 			{
-				from: resolve(__dirname, '../src/css/lib'),
-				to: resolve(__dirname, `../${CONFIG.DIR.DIST}/${CONFIG.DIR.STYLE}`),
+				from: resolve(__dirname, '../src/lib'),
+				to: resolve(__dirname, `../${CONFIG.DIR.DIST}/${CONFIG.DIR.LIB}`),
 				writeToDisk: !isDev
 			}
 		]),

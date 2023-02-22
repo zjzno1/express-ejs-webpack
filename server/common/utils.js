@@ -23,14 +23,14 @@ function getTemplateString (filename) {
 async function render (res, filename, data) {
 	// 文件后缀
 	const ext = '.ejs'
-	filename = filename.indexOf(ext) > -1 ? filename.split(ext)[0] : filename
+	filename = filename.indexOf(ext) > -1 ? filename.split(ext)[0] : filename;
 	try {
 		if (isDev) {
 			const template = await getTemplateString(`${filename}.ejs`)
 			let html = ejs.render(template, data)
 			res.send(html)
 		} else {
-			res.render(filename, data)
+			res.render('views/'+filename, data)
 		}
 		return Promise.resolve()
 	} catch (e) {

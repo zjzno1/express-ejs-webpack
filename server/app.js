@@ -49,7 +49,8 @@ app.use('/error', errorRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-	res.redirect('/error/404')
+	// res.redirect('/error/404')
+	next(createError(404));
 })
 
 // 错误处理
